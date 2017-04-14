@@ -19,12 +19,32 @@ android {
     }
 }
 
+ext {
+    supportLibVersion = '25.3.1'
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
+
+    //API
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    //support
+    compile "com.android.support:appcompat-v7:${supportLibVersion}"
+    compile "com.android.support:recyclerview-v7:${supportLibVersion}"
+    compile "com.android.support:design:${supportLibVersion}"
+
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //Test
     testCompile 'junit:junit:4.12'
+    testCompile "com.github.tomakehurst:wiremock:2.5.1"
+    testCompile 'org.mockito:mockito-core:2.7.12'
 }
