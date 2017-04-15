@@ -10,7 +10,7 @@ interface RepositoryEndpoint {
   /**
    * search/repositories?q=language:Java&sort=stars&page=1
    *
-   * @param language Programing language
+   * @param language Programing language, should not be null, or 'll throw IllegalArgumentException
    * @param sort sort order
    * @param page page number
    * @return Future call with DTO with list of repositories
