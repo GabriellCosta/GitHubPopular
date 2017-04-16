@@ -56,8 +56,10 @@ public final class TestUtils {
    * @return  resourceas string
    */
   public static String readFile(final String fileName) {
+    ClassLoader classLoader = TestUtils.class.getClassLoader();
+    File file = new File(classLoader.getResource(fileName).getFile());
     try {
-      return readFile(new File(TEST_RESOURCE, fileName));
+      return readFile(file);
     } catch (FileNotFoundException e) {
       throw new RuntimeException(e.getMessage());
     }
