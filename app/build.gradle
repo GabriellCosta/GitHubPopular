@@ -19,6 +19,12 @@ android {
     }
 }
 
+sourceSets {
+    test {
+        resources.srcDirs 'src/test/resources'
+    }
+}
+
 ext {
     supportLibVersion = '25.3.1'
 }
