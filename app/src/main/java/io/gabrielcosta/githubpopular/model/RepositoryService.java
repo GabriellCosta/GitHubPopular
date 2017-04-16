@@ -13,8 +13,9 @@ public class RepositoryService {
 
   private final RepositoryEndpoint service;
 
-  public RepositoryService(Retrofit retrofit) {
-    service = retrofit.create(RepositoryEndpoint.class);
+  public RepositoryService(String baseUrl) {
+    Retrofit build = RetrofitBuilder.getInstance().build(baseUrl);
+    service = build.create(RepositoryEndpoint.class);
   }
 
   public Call<RepositoriesDTO> fetchRepositories(@NonNull final String language,

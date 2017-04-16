@@ -15,8 +15,7 @@ public class RepositoryServiceTest {
 
   @Before
   public void before() {
-    service = new RepositoryService(
-        RetrofitBuilder.getInstance().build(TestUtils.WIRE_MOCK_FINAL_URL));
+    service = new RepositoryService(TestUtils.WIRE_MOCK_FINAL_URL);
   }
 
   @Test
