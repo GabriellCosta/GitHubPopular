@@ -21,9 +21,7 @@ public final class TestUtils {
   public static final String WIRE_MOCK_URL = "http://localhost";
   public static final String WIRE_MOCK_FINAL_URL = String
       .format("%1$s:%2$s/", WIRE_MOCK_URL, WIRE_MOCK_PORT);
-  public static final long DEF_SERVICE_ASYNC_WAIT = 100L;
-
-  private static final String TEST_RESOURCE = "src/test/resources/";
+  public static final long DEF_SERVICE_ASYNC_WAIT = 300L;
 
   /**
    *  Stub a api call
