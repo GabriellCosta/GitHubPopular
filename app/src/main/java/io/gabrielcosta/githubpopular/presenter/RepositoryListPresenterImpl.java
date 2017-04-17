@@ -33,11 +33,13 @@ public final class RepositoryListPresenterImpl implements
   public void onResponse(Call<RepositoriesDTO> call, Response<RepositoriesDTO> response) {
     if (response.isSuccessful() && !response.body().getItems().isEmpty()) {
       view.setItems(response.body().getItems());
+    } else {
+      view.setEmptyList();
     }
   }
 
   @Override
   public void onFailure(Call<RepositoriesDTO> call, Throwable t) {
-    view.setEmptyList();
+    view.setError();
   }
 }
