@@ -1,3 +1,5 @@
 <resources>
   <string name="app_name">GitHubPopular</string>
+  <string name="repository_list_forks">%d forks</string>
+  <string name="repository_list_stars">%d stars</string>
 </resources>
