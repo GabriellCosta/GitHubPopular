@@ -11,6 +11,7 @@ android {
         versionName "1.0"
         vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "HOST_NAME", "\"https://api.github.com\""
     }
     buildTypes {
         release {
