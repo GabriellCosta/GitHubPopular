@@ -39,7 +39,8 @@ public class RepositoryListAdapter extends Adapter<RepositoryVH> {
     holder.description.setText(item.getDescription());
     holder.authorFullName.setText(item.getOwner().getLogin());
     holder.author.setText(item.getOwner().getLogin());
-    ImageLoaderHelper.loadImage(item.getOwner().getAvatarUrl(), holder.authorImage);
+    ImageLoaderHelper
+        .loadImage(item.getOwner().getAvatarUrl(), holder.authorImage, R.drawable.ic_person);
     final Context context = holder.itemView.getContext();
     holder.stars.setText(context.getString(R.string.repository_list_stars, item.getStars()));
     holder.forks.setText(context.getString(R.string.repository_list_forks, item.getForks()));
