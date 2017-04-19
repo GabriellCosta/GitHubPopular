@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements RepositoryListView {
 
-  RecyclerView recyclerView;
+  private RecyclerView recyclerView;
   private RepositoryListPresenter presenter;
   private ProgressBar progressBar;
   private LinearLayoutManager layout;
