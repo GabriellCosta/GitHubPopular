@@ -13,6 +13,7 @@ import io.gabrielcosta.githubpopular.contract.RepositoryListContract.RepositoryL
 import io.gabrielcosta.githubpopular.entity.RepositorieVO;
 import io.gabrielcosta.githubpopular.model.RepositoryService;
 import io.gabrielcosta.githubpopular.presenter.RepositoryListPresenterImpl;
+import io.gabrielcosta.githubpopular.utils.EndlessRecyclerOnScrollListener;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements RepositoryListView {
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
   RecyclerView recyclerView;
   private RepositoryListPresenter presenter;
   private ProgressBar progressBar;
+  private LinearLayoutManager layout;
+  private RepositoryListAdapter adapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +30,11 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
     setContentView(R.layout.activity_main);
     progressBar = (ProgressBar) findViewById(R.id.progressbar_repository);
     recyclerView = (RecyclerView) findViewById(R.id.rv_repository);
+    adapter = new RepositoryListAdapter();
+    layout = new LinearLayoutManager(this);
     presenter = new RepositoryListPresenterImpl(this,
         new RepositoryService(BuildConfig.HOST_NAME));
+    configureRecyclerView(recyclerView);
     presenter.load();
   }
 
@@ -45,14 +51,20 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
   @Override
   public void setItems(List<RepositorieVO> items) {
     progressBar.setVisibility(View.GONE);
-    configureRecyclerView(recyclerView, items);
+    adapter.addItems(items);
   }
 
-  private void configureRecyclerView(final RecyclerView recyclerView, List<RepositorieVO> items) {
+  private void configureRecyclerView(final RecyclerView recyclerView) {
     recyclerView.setVisibility(View.VISIBLE);
-    recyclerView.setAdapter(new RepositoryListAdapter(items));
-    final LinearLayoutManager layout = new LinearLayoutManager(this);
+    recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(layout);
     recyclerView.addItemDecoration(new DividerItemDecoration(this, layout.getOrientation()));
+    recyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener(layout) {
+      @Override
+      protected void onLoadMore(int currentPage) {
+        presenter.loadPage(currentPage);
+        progressBar.setVisibility(View.VISIBLE);
+      }
+    });
   }
 }
