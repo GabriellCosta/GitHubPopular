@@ -30,6 +30,25 @@ public final class RepositoryListPresenterImpl implements
   }
 
   @Override
+  public void loadPage(int pageToLoad) {
+    service.fetchRepositories("java", "stars", pageToLoad).enqueue(new Callback<RepositoriesDTO>() {
+      @Override
+      public void onResponse(Call<RepositoriesDTO> call, Response<RepositoriesDTO> response) {
+        if (response.isSuccessful() && !response.body().getItems().isEmpty()) {
+          view.setItems(response.body().getItems());
+        } else {
+          view.setError();
+        }
+      }
+
+      @Override
+      public void onFailure(Call<RepositoriesDTO> call, Throwable t) {
+          view.setError();
+      }
+    });
+  }
+
+  @Override
   public void onResponse(Call<RepositoriesDTO> call, Response<RepositoriesDTO> response) {
     if (response.isSuccessful() && !response.body().getItems().isEmpty()) {
       view.setItems(response.body().getItems());
