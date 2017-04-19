@@ -28,12 +28,7 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    progressBar = (ProgressBar) findViewById(R.id.progressbar_repository);
-    recyclerView = (RecyclerView) findViewById(R.id.rv_repository);
-    adapter = new RepositoryListAdapter();
-    layout = new LinearLayoutManager(this);
-    presenter = new RepositoryListPresenterImpl(this,
-        new RepositoryService(BuildConfig.HOST_NAME));
+    init();
     configureRecyclerView(recyclerView);
     presenter.load();
   }
@@ -52,6 +47,15 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
   public void setItems(List<RepositorieVO> items) {
     progressBar.setVisibility(View.GONE);
     adapter.addItems(items);
+  }
+
+  private void init() {
+    progressBar = (ProgressBar) findViewById(R.id.progressbar_repository);
+    recyclerView = (RecyclerView) findViewById(R.id.rv_repository);
+    adapter = new RepositoryListAdapter();
+    layout = new LinearLayoutManager(this);
+    presenter = new RepositoryListPresenterImpl(this,
+        new RepositoryService(BuildConfig.HOST_NAME));
   }
 
   private void configureRecyclerView(final RecyclerView recyclerView) {
