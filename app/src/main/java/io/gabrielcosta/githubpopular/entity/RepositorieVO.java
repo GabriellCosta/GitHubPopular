@@ -1,12 +1,13 @@
 package io.gabrielcosta.githubpopular.entity;
 
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
 
 /**
  * VO utilized in view to fill repositores list
  */
-public final class RepositorieVO {
+public final class RepositorieVO implements Serializable {
 
   @SerializedName("name")
   private final String name;
