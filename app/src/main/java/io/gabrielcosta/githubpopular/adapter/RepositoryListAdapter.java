@@ -14,6 +14,7 @@ import io.gabrielcosta.githubpopular.adapter.RepositoryListAdapter.RepositoryVH;
 import io.gabrielcosta.githubpopular.entity.RepositorieVO;
 import io.gabrielcosta.githubpopular.utils.ImageLoaderHelper;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RepositoryListAdapter extends Adapter<RepositoryVH> {
@@ -60,6 +61,10 @@ public class RepositoryListAdapter extends Adapter<RepositoryVH> {
   public void addItems(final List<RepositorieVO> items) {
     list.addAll(items);
     notifyDataSetChanged();
+  }
+
+  public List<RepositorieVO> getItemList() {
+    return Collections.unmodifiableList(list);
   }
 
   class RepositoryVH extends ViewHolder {
