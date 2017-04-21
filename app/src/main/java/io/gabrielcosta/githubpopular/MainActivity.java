@@ -8,6 +8,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
 import io.gabrielcosta.githubpopular.adapter.RepositoryListAdapter;
 import io.gabrielcosta.githubpopular.contract.RepositoryListContract.RepositoryListPresenter;
@@ -16,6 +17,7 @@ import io.gabrielcosta.githubpopular.entity.RepositorieVO;
 import io.gabrielcosta.githubpopular.model.RepositoryService;
 import io.gabrielcosta.githubpopular.presenter.RepositoryListPresenterImpl;
 import io.gabrielcosta.githubpopular.utils.EndlessRecyclerOnScrollListener;
+import io.gabrielcosta.githubpopular.utils.NetworkUtils;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements RepositoryListView {
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
   private LinearLayoutManager layout;
   private RepositoryListAdapter adapter;
   private EndlessRecyclerOnScrollListener listener;
+  private View rootView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +40,11 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
     setContentView(R.layout.activity_main);
     init();
     configureRecyclerView(recyclerView);
-    if (savedInstanceState == null) {
-      presenter.load();
 
+    if (!NetworkUtils.hasConnection(this)) {
+      noInternetConnection();
+    } else if (savedInstanceState == null) {
+      presenter.load();
     }
   }
 
@@ -50,8 +55,8 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
 
   @Override
   public void setError() {
-    final View viewById = findViewById(android.R.id.content);
-    Snackbar.make(viewById, R.string.repository_list_error, BaseTransientBottomBar.LENGTH_LONG)
+    progressBar.setVisibility(View.GONE);
+    Snackbar.make(rootView, R.string.repository_list_error, BaseTransientBottomBar.LENGTH_LONG)
         .show();
   }
 
@@ -61,9 +66,28 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
     adapter.addItems(items);
   }
 
+  private void noInternetConnection() {
+    progressBar.setVisibility(View.GONE);
+    setEmptyList();
+    Snackbar.make(rootView, R.string.all_error_network, BaseTransientBottomBar.LENGTH_INDEFINITE)
+        .setAction(R.string.all_try_again, new OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            if (NetworkUtils.hasConnection(getBaseContext())) {
+              progressBar.setVisibility(View.VISIBLE);
+              presenter.load();
+            } else {
+              noInternetConnection();
+            }
+          }
+        })
+        .show();
+  }
+
   private void init() {
     progressBar = (ProgressBar) findViewById(R.id.progressbar_repository);
     recyclerView = (RecyclerView) findViewById(R.id.rv_repository);
+    rootView = findViewById(android.R.id.content);
     adapter = new RepositoryListAdapter();
     layout = new LinearLayoutManager(this);
     presenter = new RepositoryListPresenterImpl(this,

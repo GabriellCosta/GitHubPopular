@@ -3,4 +3,6 @@
   <string name="repository_list_forks">%d forks</string>
   <string name="repository_list_stars">%d stars</string>
   <string name="repository_list_error">O correu um erro ao buscar os repositorios</string>
+  <string name="all_error_network">Sem conexão com a internet</string>
+  <string name="all_try_again">Tentar Novamente</string>
 </resources>
