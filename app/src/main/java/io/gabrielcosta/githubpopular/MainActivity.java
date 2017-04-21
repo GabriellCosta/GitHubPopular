@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
   private RepositoryListAdapter adapter;
   private EndlessRecyclerOnScrollListener listener;
   private View rootView;
+  private View emptyStateView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
 
   @Override
   public void setEmptyList() {
-
+    emptyStateView.setVisibility(View.VISIBLE);
   }
 
   @Override
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
 
   @Override
   public void setItems(List<RepositorieVO> items) {
+    emptyStateView.setVisibility(View.GONE);
     progressBar.setVisibility(View.GONE);
     adapter.addItems(items);
   }
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
   }
 
   private void init() {
+    emptyStateView = findViewById(R.id.layout_empty_state);
     progressBar = (ProgressBar) findViewById(R.id.progressbar_repository);
     recyclerView = (RecyclerView) findViewById(R.id.rv_repository);
     rootView = findViewById(android.R.id.content);
