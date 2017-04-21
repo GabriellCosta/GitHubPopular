@@ -5,4 +5,5 @@
   <string name="repository_list_error">O correu um erro ao buscar os repositorios</string>
   <string name="all_error_network">Sem conexão com a internet</string>
   <string name="all_try_again">Tentar Novamente</string>
+  <string name="empty_state_description">Não existem itens para serem exibidos</string>
 </resources>
