@@ -1,11 +1,12 @@
 package io.gabrielcosta.githubpopular.entity;
 
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
 /**
  * VO for repositorie owner
  */
-public final class OwnerVO {
+public final class OwnerVO implements Serializable {
 
   @SerializedName("avatar_url")
   private final String avatarUrl;
