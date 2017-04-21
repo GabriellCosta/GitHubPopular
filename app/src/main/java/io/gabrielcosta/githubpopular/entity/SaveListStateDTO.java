@@ -1,4 +1,4 @@
-package io.gabrielcosta.githubpopular;
+package io.gabrielcosta.githubpopular.entity;
 
 import java.io.Serializable;
 import java.util.List;

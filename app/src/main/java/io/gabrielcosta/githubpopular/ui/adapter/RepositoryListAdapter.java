@@ -1,4 +1,4 @@
-package io.gabrielcosta.githubpopular.adapter;
+package io.gabrielcosta.githubpopular.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView.Adapter;
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import io.gabrielcosta.githubpopular.R;
-import io.gabrielcosta.githubpopular.adapter.RepositoryListAdapter.RepositoryVH;
 import io.gabrielcosta.githubpopular.entity.RepositorieVO;
+import io.gabrielcosta.githubpopular.ui.adapter.RepositoryListAdapter.RepositoryVH;
 import io.gabrielcosta.githubpopular.utils.ImageLoaderHelper;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -67,7 +67,7 @@ public class RepositoryListAdapter extends Adapter<RepositoryVH> {
     return Collections.unmodifiableList(list);
   }
 
-  class RepositoryVH extends ViewHolder {
+  public static class RepositoryVH extends ViewHolder {
 
     final TextView name;
     final TextView description;

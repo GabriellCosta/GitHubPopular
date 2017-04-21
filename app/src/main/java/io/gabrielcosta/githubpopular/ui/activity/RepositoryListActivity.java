@@ -1,4 +1,4 @@
-package io.gabrielcosta.githubpopular;
+package io.gabrielcosta.githubpopular.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.BaseTransientBottomBar;
@@ -10,7 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
-import io.gabrielcosta.githubpopular.adapter.RepositoryListAdapter;
+import io.gabrielcosta.githubpopular.BuildConfig;
+import io.gabrielcosta.githubpopular.R;
+import io.gabrielcosta.githubpopular.entity.SaveListStateDTO;
+import io.gabrielcosta.githubpopular.ui.adapter.RepositoryListAdapter;
 import io.gabrielcosta.githubpopular.contract.RepositoryListContract.RepositoryListPresenter;
 import io.gabrielcosta.githubpopular.contract.RepositoryListContract.RepositoryListView;
 import io.gabrielcosta.githubpopular.entity.RepositorieVO;
