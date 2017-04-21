@@ -1,6 +1,8 @@
 package io.gabrielcosta.githubpopular;
 
 import android.os.Bundle;
+import android.support.design.widget.BaseTransientBottomBar;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -48,7 +50,9 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
 
   @Override
   public void setError() {
-
+    final View viewById = findViewById(android.R.id.content);
+    Snackbar.make(viewById, R.string.repository_list_error, BaseTransientBottomBar.LENGTH_LONG)
+        .show();
   }
 
   @Override
