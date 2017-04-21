@@ -20,7 +20,7 @@ import io.gabrielcosta.githubpopular.utils.EndlessRecyclerOnScrollListener;
 import io.gabrielcosta.githubpopular.utils.NetworkUtils;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements RepositoryListView {
+public class RepositoryListActivity extends AppCompatActivity implements RepositoryListView {
 
   private static final String ITEM_LIST = "ITEM_LIST";
   private static final String LAYOUT_POSITION = "LAYOUT_POSITION";
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements RepositoryListVie
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    setContentView(R.layout.activity_repository_list);
     init();
     configureRecyclerView(recyclerView);
 
