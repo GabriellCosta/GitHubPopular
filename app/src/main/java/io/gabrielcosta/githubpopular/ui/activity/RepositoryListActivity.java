@@ -68,6 +68,7 @@ public class RepositoryListActivity extends AppCompatActivity implements Reposit
   public void setItems(List<RepositorieVO> items) {
     emptyStateView.setVisibility(View.GONE);
     progressBar.setVisibility(View.GONE);
+    recyclerView.setVisibility(View.VISIBLE);
     adapter.addItems(items);
   }
 
@@ -122,7 +123,6 @@ public class RepositoryListActivity extends AppCompatActivity implements Reposit
   }
 
   private void configureRecyclerView(final RecyclerView recyclerView) {
-    recyclerView.setVisibility(View.VISIBLE);
     recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(layout);
     recyclerView.addItemDecoration(new DividerItemDecoration(this, layout.getOrientation()));
