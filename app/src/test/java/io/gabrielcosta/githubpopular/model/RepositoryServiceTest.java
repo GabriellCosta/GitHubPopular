@@ -29,6 +29,7 @@ public class RepositoryServiceTest {
     Assert.assertEquals("URL query isn't equal", expected, result);
   }
 
+
   @Test(expected = IllegalArgumentException.class)
   public void shouldThrowExceptionWhenLanguageIsNull() {
     service.fetchRepositories(null, "stars", 1).request().url();
@@ -39,4 +40,28 @@ public class RepositoryServiceTest {
     service.fetchRepositories("", "stars", 1).request().url();
   }
 
+  @Test
+  public void shouldEvaluateTheCorrectUrlForPullRequest() {
+    String result = service.fetchPullREquest("ReactiveX", "RxJava").request().url().toString();
+    final String expected = String
+        .format("%srepos/ReactiveX/RxJava/pulls",
+            TestUtils.WIRE_MOCK_FINAL_URL);
+
+    Assert.assertEquals("URL query isn't equal", expected, result);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void shoulThrowExceptionWhenUserIsEmpty() {
+    service.fetchPullREquest("", "notempty").request().url();
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void shoulThrowExceptionWhenRepositoryIsEmpty() {
+    service.fetchPullREquest("notempty", "").request().url();
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void shoulThrowExceptionWhenRepositoryAndUserAreEmpty() {
+    service.fetchPullREquest("", "").request().url();
+  }
 }
