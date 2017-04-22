@@ -1,8 +1,11 @@
 package io.gabrielcosta.githubpopular.model;
 
+import io.gabrielcosta.githubpopular.entity.PullRequestVO;
 import io.gabrielcosta.githubpopular.entity.RepositoriesDTO;
+import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 interface RepositoryEndpoint {
@@ -18,5 +21,9 @@ interface RepositoryEndpoint {
   @GET("search/repositories")
   Call<RepositoriesDTO> search(@Query("q") final String language,
       @Query("sort") final String sort, @Query("page") final int page);
+
+  @GET("repos/{user}/{repo}/pulls")
+  Call<List<PullRequestVO>> fetchPullRequests(@Path("user") final String user,
+      @Path("repo") final String repository);
 
 }
