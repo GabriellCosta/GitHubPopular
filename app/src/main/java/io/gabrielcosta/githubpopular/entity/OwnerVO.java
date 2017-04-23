@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * VO for repositorie owner
  */
-public final class OwnerVO implements Serializable {
+public class OwnerVO implements Serializable {
 
   @SerializedName("avatar_url")
   private final String avatarUrl;

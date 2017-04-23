@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * VO utilized in view to fill repositores list
  */
-public final class RepositorieVO implements Serializable {
+public class RepositorieVO implements Serializable {
 
   @SerializedName("name")
   private final String name;
@@ -20,7 +20,7 @@ public final class RepositorieVO implements Serializable {
   @SerializedName("owner")
   private final OwnerVO owner;
 
-  public RepositorieVO(String name, String description, int forks, int stars,
+  private RepositorieVO(String name, String description, int forks, int stars,
       OwnerVO ownerVO) {
     this.name = name;
     this.description = description;
