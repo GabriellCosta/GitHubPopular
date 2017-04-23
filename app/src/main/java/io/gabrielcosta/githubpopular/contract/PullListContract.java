@@ -1,7 +1,6 @@
 package io.gabrielcosta.githubpopular.contract;
 
 import io.gabrielcosta.githubpopular.entity.PullRequestVO;
-import io.gabrielcosta.githubpopular.entity.RepositorieVO;
 import java.util.List;
 
 /**
@@ -26,7 +25,7 @@ public final class PullListContract {
 
   public interface PullListPresenter {
 
-    void init(final RepositorieVO repositorieVO);
+    void init();
 
     void load();
 
