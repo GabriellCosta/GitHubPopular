@@ -32,6 +32,7 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_pul_list);
     init();
     configureRecyclerView();
     getExtras(getIntent().getExtras());
