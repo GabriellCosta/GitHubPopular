@@ -2,6 +2,8 @@ package io.gabrielcosta.githubpopular.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BaseTransientBottomBar;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,6 +34,7 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
   private PullListPresenter presenter;
   private ProgressBar progressBar;
   private View emptyStateView;
+  private View rootView;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,7 +62,9 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
 
   @Override
   public void setError() {
-
+    progressBar.setVisibility(View.GONE);
+    Snackbar.make(rootView, R.string.pull_list_error, BaseTransientBottomBar.LENGTH_LONG)
+        .show();
   }
 
   @Override
@@ -73,6 +78,7 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
   }
 
   private void init() {
+    rootView = findViewById(android.R.id.content);
     emptyStateView = findViewById(R.id.layout_empty_state);
     progressBar = (ProgressBar) findViewById(R.id.progressbar_pull);
     recyclerView = (RecyclerView) findViewById(R.id.rv_pull);
