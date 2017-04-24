@@ -6,10 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import io.gabrielcosta.githubpopular.BuildConfig;
 import io.gabrielcosta.githubpopular.R;
 import io.gabrielcosta.githubpopular.contract.PullListContract;
+import io.gabrielcosta.githubpopular.contract.PullListContract.PullListPresenter;
 import io.gabrielcosta.githubpopular.entity.PullRequestVO;
 import io.gabrielcosta.githubpopular.entity.RepositorieVO;
+import io.gabrielcosta.githubpopular.model.RepositoryService;
+import io.gabrielcosta.githubpopular.presenter.PullListPresenterImpl;
 import io.gabrielcosta.githubpopular.ui.adapter.PullListAdapter;
 import java.util.List;
 
@@ -22,12 +26,14 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
   private RecyclerView recyclerView;
   private PullListAdapter adapter;
   private LinearLayoutManager layoutManager;
+  private PullListPresenter presenter;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     init();
     getExtras(getIntent().getExtras());
+    loadPullList();
   }
 
   @Override
@@ -59,6 +65,12 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
     recyclerView = (RecyclerView) findViewById(R.id.rv_pull);
     layoutManager = new LinearLayoutManager(this);
     adapter = new PullListAdapter();
+    presenter = new PullListPresenterImpl(this, new RepositoryService(BuildConfig.HOST_NAME),
+        repositorieVO);
+  }
+
+  private void loadPullList() {
+    presenter.load();
   }
 
   private void getExtras(final Bundle bundle) {
