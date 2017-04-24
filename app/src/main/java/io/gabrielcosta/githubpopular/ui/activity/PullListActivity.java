@@ -67,16 +67,6 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
         .show();
   }
 
-  @Override
-  public void setForks(int forks) {
-
-  }
-
-  @Override
-  public void setStarts(int stars) {
-
-  }
-
   private void init() {
     rootView = findViewById(android.R.id.content);
     emptyStateView = findViewById(R.id.layout_empty_state);

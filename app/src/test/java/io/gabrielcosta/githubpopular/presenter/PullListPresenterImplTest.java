@@ -5,7 +5,6 @@ import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -65,18 +64,6 @@ public class PullListPresenterImplTest {
     presenter.load();
     TestUtils.sleep(WAIT_TIME);
     verify(view, times(1)).setItems(ArgumentMatchers.<PullRequestVO>anyList());
-  }
-
-  @Test
-  public void shouldSetForks() {
-    presenter.init();
-    verify(view, times(1)).setForks(anyInt());
-  }
-
-  @Test
-  public void shouldSetStars() {
-    presenter.init();
-    verify(view, times(1)).setStarts(anyInt());
   }
 
   @Test

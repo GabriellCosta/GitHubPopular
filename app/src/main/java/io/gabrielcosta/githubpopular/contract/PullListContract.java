@@ -17,15 +17,9 @@ public final class PullListContract {
 
     void setError();
 
-    void setForks(final int forks);
-
-    void setStarts(final int stars);
-
   }
 
   public interface PullListPresenter {
-
-    void init();
 
     void load();
 

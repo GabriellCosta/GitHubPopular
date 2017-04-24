@@ -24,12 +24,6 @@ public final class PullListPresenterImpl implements PullListPresenter {
   }
 
   @Override
-  public void init() {
-    view.setForks(repositorieVO.getForks());
-    view.setStarts(repositorieVO.getStars());
-  }
-
-  @Override
   public void load() {
     service.fetchPullREquest(repositorieVO.getOwner().getLogin(), repositorieVO.getName()).enqueue(
         new Callback<List<PullRequestVO>>() {
