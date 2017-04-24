@@ -3,6 +3,7 @@ package io.gabrielcosta.githubpopular.ui.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -32,6 +33,7 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     init();
+    configureRecyclerView();
     getExtras(getIntent().getExtras());
     loadPullList();
   }
@@ -80,5 +82,11 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
       Log.e(TAG, "Intent should have Repository info");
       throw new IllegalArgumentException("Intent should have Repository info");
     }
+  }
+
+  private void configureRecyclerView() {
+    recyclerView.setAdapter(adapter);
+    recyclerView.setLayoutManager(layoutManager);
+    recyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
   }
 }
