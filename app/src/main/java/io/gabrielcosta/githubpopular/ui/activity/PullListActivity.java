@@ -31,6 +31,7 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
   private LinearLayoutManager layoutManager;
   private PullListPresenter presenter;
   private ProgressBar progressBar;
+  private View emptyStateView;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,7 +52,8 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
 
   @Override
   public void setEmptyList() {
-
+    emptyStateView.setVisibility(View.VISIBLE);
+    progressBar.setVisibility(View.GONE);
   }
 
   @Override
@@ -70,6 +72,7 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
   }
 
   private void init() {
+    emptyStateView = findViewById(R.id.layout_empty_state);
     progressBar = (ProgressBar) findViewById(R.id.progressbar_pull);
     recyclerView = (RecyclerView) findViewById(R.id.rv_pull);
     layoutManager = new LinearLayoutManager(this);

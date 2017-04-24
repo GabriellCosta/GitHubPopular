@@ -36,7 +36,7 @@ public final class PullListPresenterImpl implements PullListPresenter {
           @Override
           public void onResponse(Call<List<PullRequestVO>> call,
               Response<List<PullRequestVO>> response) {
-            if (response.isSuccessful()) {
+            if (response.isSuccessful() && !response.body().isEmpty()) {
               view.setItems(response.body());
             } else {
               view.setEmptyList();
