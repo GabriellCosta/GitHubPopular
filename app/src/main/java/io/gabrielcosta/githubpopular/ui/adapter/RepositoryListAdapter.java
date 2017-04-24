@@ -1,6 +1,7 @@
 package io.gabrielcosta.githubpopular.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import io.gabrielcosta.githubpopular.R;
 import io.gabrielcosta.githubpopular.entity.RepositorieVO;
+import io.gabrielcosta.githubpopular.ui.activity.PullListActivity;
 import io.gabrielcosta.githubpopular.ui.adapter.RepositoryListAdapter.RepositoryVH;
 import io.gabrielcosta.githubpopular.utils.ImageLoaderHelper;
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class RepositoryListAdapter extends Adapter<RepositoryVH> {
 
   @Override
   public void onBindViewHolder(RepositoryVH holder, int position) {
-    RepositorieVO item = list.get(position);
+    final RepositorieVO item = list.get(position);
 
     holder.name.setText(item.getName());
     holder.description.setText(item.getDescription());
@@ -48,7 +50,9 @@ public class RepositoryListAdapter extends Adapter<RepositoryVH> {
     holder.itemView.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        //TODO: NAVIGATION TO PULL LIST
+        Intent intent = new Intent(v.getContext(), PullListActivity.class);
+        intent.putExtra(PullListActivity.EXTRA_REPOSITORY, item);
+        v.getContext().startActivity(intent);
       }
     });
   }
