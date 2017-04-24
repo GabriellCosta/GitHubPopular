@@ -7,6 +7,8 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import io.gabrielcosta.githubpopular.BuildConfig;
 import io.gabrielcosta.githubpopular.R;
 import io.gabrielcosta.githubpopular.contract.PullListContract;
@@ -28,6 +30,7 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
   private PullListAdapter adapter;
   private LinearLayoutManager layoutManager;
   private PullListPresenter presenter;
+  private ProgressBar progressBar;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +45,8 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
   @Override
   public void setItems(List<PullRequestVO> items) {
     adapter.addItems(items);
+    progressBar.setVisibility(View.GONE);
+    recyclerView.setVisibility(View.VISIBLE);
   }
 
   @Override
@@ -65,6 +70,7 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
   }
 
   private void init() {
+    progressBar = (ProgressBar) findViewById(R.id.progressbar_pull);
     recyclerView = (RecyclerView) findViewById(R.id.rv_pull);
     layoutManager = new LinearLayoutManager(this);
     adapter = new PullListAdapter();
