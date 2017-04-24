@@ -41,6 +41,7 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
     init();
     configureRecyclerView();
     loadPullList();
+    configureToolbar();
   }
 
   @Override
@@ -98,5 +99,12 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
     recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(layoutManager);
     recyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
+  }
+
+  private void configureToolbar() {
+    setTitle(repositorieVO.getName());
+    getSupportActionBar().setSubtitle(
+        getString(R.string.pull_list_sub_title, repositorieVO.getForks(),
+            repositorieVO.getStars()));
   }
 }
