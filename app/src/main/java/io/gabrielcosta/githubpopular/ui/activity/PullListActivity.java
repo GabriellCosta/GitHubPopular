@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import io.gabrielcosta.githubpopular.R;
 import io.gabrielcosta.githubpopular.contract.PullListContract;
 import io.gabrielcosta.githubpopular.entity.PullRequestVO;
@@ -14,6 +15,7 @@ import java.util.List;
 
 public class PullListActivity extends AppCompatActivity implements PullListContract.PullListView {
 
+  private static final String TAG = PullListActivity.class.getName();
   public static final String EXTRA_REPOSITORY = "EXTRA_REPOSITORY";
 
   private RepositorieVO repositorieVO;
@@ -25,6 +27,7 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     init();
+    getExtras(getIntent().getExtras());
   }
 
   @Override
@@ -56,5 +59,14 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
     recyclerView = (RecyclerView) findViewById(R.id.rv_pull);
     layoutManager = new LinearLayoutManager(this);
     adapter = new PullListAdapter();
+  }
+
+  private void getExtras(final Bundle bundle) {
+    if (bundle != null) {
+      repositorieVO = (RepositorieVO) bundle.getSerializable(EXTRA_REPOSITORY);
+    } else {
+      Log.e(TAG, "Intent should have Repository info");
+      throw new IllegalArgumentException("Intent should have Repository info");
+    }
   }
 }
