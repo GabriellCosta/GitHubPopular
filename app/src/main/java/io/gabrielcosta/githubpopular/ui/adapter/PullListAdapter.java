@@ -49,6 +49,7 @@ public class PullListAdapter extends Adapter<PullListVH> {
 
   public void addItems(final List<PullRequestVO> items) {
     list.addAll(items);
+    notifyDataSetChanged();
   }
 
   public List<PullRequestVO> getItemList() {
