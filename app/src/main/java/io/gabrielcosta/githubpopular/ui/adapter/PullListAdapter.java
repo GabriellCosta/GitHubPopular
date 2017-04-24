@@ -35,7 +35,7 @@ public class PullListAdapter extends Adapter<PullListVH> {
     PullRequestVO item = list.get(position);
 
     holder.name.setText(item.getTitle());
-    holder.description.setText(item.getTitle());
+    holder.description.setText(item.getBody());
     holder.authorFullName.setText(item.getUser().getLogin());
     holder.author.setText(item.getUser().getLogin());
     ImageLoaderHelper
