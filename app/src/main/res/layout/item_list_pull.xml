@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:paddingStart="24dp"
+  android:paddingEnd="24dp"
+  android:paddingLeft="24dp"
+  android:paddingRight="24dp"
+  android:background="?attr/selectableItemBackground">
+
+  <TextView
+    android:id="@+id/textView_pull_name"
+    android:textStyle="bold"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginRight="8dp"
+    android:textSize="16sp"
+    app:layout_constraintBottom_toTopOf="@+id/textView_pull_description"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="Repository Name" />
+  <TextView
+    android:id="@+id/textView_pull_description"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:ellipsize="end"
+    android:maxLines="2"
+    app:layout_constraintBottom_toTopOf="@+id/imageView_pull_author_photo"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView_pull_name"
+    tools:text="Repository description lorem ipsum, lorem ipsum, lorem ipsum" />
+  <ImageView
+    android:id="@+id/imageView_pull_author_photo"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:adjustViewBounds="false"
+    android:cropToPadding="false"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toLeftOf="@+id/textView_pull_author_login"
+    app:layout_constraintTop_toBottomOf="@+id/textView_pull_description"
+    app:srcCompat="@drawable/ic_person" />
+  <TextView
+    android:id="@+id/textView_pull_author_login"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="textView_repository_author_full_name"
+    app:layout_constraintLeft_toRightOf="@+id/imageView_pull_author_photo"
+    app:layout_constraintTop_toBottomOf="@+id/textView_pull_description"
+    tools:text="Login" />
+  <TextView
+    android:id="@+id/textView_pull_author_full_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toRightOf="@+id/imageView_pull_author_photo"
+    app:layout_constraintTop_toBottomOf="@+id/textView_pull_description"
+    tools:text="Full Name" />
+
+</android.support.constraint.ConstraintLayout>
