@@ -1,9 +1,14 @@
 package io.gabrielcosta.githubpopular.ui.adapter;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AlertDialog.Builder;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,7 +37,7 @@ public class PullListAdapter extends Adapter<PullListVH> {
 
   @Override
   public void onBindViewHolder(PullListVH holder, int position) {
-    PullRequestVO item = list.get(position);
+    final PullRequestVO item = list.get(position);
 
     holder.name.setText(item.getTitle());
     holder.description.setText(item.getBody());
@@ -40,6 +45,24 @@ public class PullListAdapter extends Adapter<PullListVH> {
     holder.author.setText(item.getUser().getLogin());
     ImageLoaderHelper
         .loadImage(item.getUser().getAvatarUrl(), holder.authorImage, R.drawable.ic_person);
+    holder.itemView.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(final View v) {
+
+        new Builder(v.getContext())
+            .setMessage(R.string.pull_list_dialog_message_exit_app)
+            .setPositiveButton(R.string.all_ok, new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                final Intent intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(item.getHtmlUrl()));
+                v.getContext().startActivity(intent);
+              }
+            })
+            .setNegativeButton(R.string.all_cancel, null)
+            .show();
+      }
+    });
   }
 
   @Override

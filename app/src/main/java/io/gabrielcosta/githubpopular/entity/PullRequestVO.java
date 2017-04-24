@@ -18,6 +18,9 @@ public class PullRequestVO {
   @SerializedName("created_at")
   private final Date createdDate;
 
+  @SerializedName("html_url")
+  private String htmlUrl;
+
   @SerializedName("user")
   private final OwnerVO user;
 
@@ -43,5 +46,9 @@ public class PullRequestVO {
 
   public OwnerVO getUser() {
     return user;
+  }
+
+  public String getHtmlUrl() {
+    return htmlUrl;
   }
 }

@@ -7,4 +7,7 @@
   <string name="all_try_again">Tentar Novamente</string>
   <string name="empty_state_description">Não existem itens para serem exibidos</string>
   <string name="pull_list_sub_title">%1$d Forks / %2$d Stars</string>
+  <string name="all_ok">OK</string>
+  <string name="all_cancel">Cancelar</string>
+  <string name="pull_list_dialog_message_exit_app">Você ira sair do aplicativo e ira para o seu navegador</string>
 </resources>
