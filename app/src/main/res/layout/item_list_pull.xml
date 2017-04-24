@@ -48,7 +48,7 @@
     android:id="@+id/textView_pull_author_login"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="textView_repository_author_full_name"
+    app:layout_constraintBottom_toBottomOf="@+id/textView_repository_author_full_name"
     app:layout_constraintLeft_toRightOf="@+id/imageView_pull_author_photo"
     app:layout_constraintTop_toBottomOf="@+id/textView_pull_description"
     tools:text="Login" />
