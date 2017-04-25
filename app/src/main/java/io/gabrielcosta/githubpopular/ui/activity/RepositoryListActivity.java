@@ -119,6 +119,7 @@ public class RepositoryListActivity extends AppCompatActivity implements Reposit
       adapter.addItems((List<RepositorieVO>) serializable.getList());
       listener.setCurrentPage(savedInstanceState.getInt(PAGE_NUMBER));
       progressBar.setVisibility(View.GONE);
+      recyclerView.setVisibility(View.VISIBLE);
     }
   }
 
