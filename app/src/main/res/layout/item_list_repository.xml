@@ -80,7 +80,7 @@
     app:layout_constraintGuide_end="78dp" />
   <ImageView
     android:id="@+id/imageView_fork"
-    android:layout_width="0dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
@@ -99,7 +99,7 @@
 
   <ImageView
     android:id="@+id/imageView_star"
-    android:layout_width="0dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toRightOf="@id/textView_repository_forks"
