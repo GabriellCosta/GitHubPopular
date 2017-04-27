@@ -62,6 +62,7 @@ public class RepositoryListActivity extends AppCompatActivity implements Reposit
     progressBar.setVisibility(View.GONE);
     Snackbar.make(rootView, R.string.repository_list_error, BaseTransientBottomBar.LENGTH_LONG)
         .show();
+    listener.wasLoaded(Boolean.FALSE);
   }
 
   @Override
@@ -70,6 +71,7 @@ public class RepositoryListActivity extends AppCompatActivity implements Reposit
     progressBar.setVisibility(View.GONE);
     recyclerView.setVisibility(View.VISIBLE);
     adapter.addItems(items);
+    listener.wasLoaded(Boolean.TRUE);
   }
 
   private void noInternetConnection() {

@@ -50,6 +50,13 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
     }
   }
 
+  public void wasLoaded(boolean loaded) {
+    if (loaded) {
+      currentPage++;
+    }
+    loading = Boolean.FALSE;
+  }
+
   protected abstract void onLoadMore(final int currentPage);
 
   private void isLoading(final int totalItemCount) {
@@ -58,7 +65,6 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
   }
 
   private void endRechead() {
-    currentPage++;
     onLoadMore(currentPage);
     loading = Boolean.TRUE;
   }
