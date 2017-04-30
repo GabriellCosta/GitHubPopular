@@ -1,9 +1,12 @@
 package io.gabrielcosta.githubpopular.utils;
 
-/**
- * Created by gabrielcosta on 29/04/17.
- */
+import io.gabrielcosta.githubpopular.BuildConfig;
 
+/**
+ * Configuração de HOSt para chamada de API's
+ */
 public final class HostConfig {
+
+  public static String HOST_URL = BuildConfig.HOST_NAME;
 
 }
