@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
-import io.gabrielcosta.githubpopular.BuildConfig;
 import io.gabrielcosta.githubpopular.R;
 import io.gabrielcosta.githubpopular.contract.PullListContract;
 import io.gabrielcosta.githubpopular.contract.PullListContract.PullListPresenter;
@@ -20,6 +19,7 @@ import io.gabrielcosta.githubpopular.entity.RepositorieVO;
 import io.gabrielcosta.githubpopular.model.RepositoryService;
 import io.gabrielcosta.githubpopular.presenter.PullListPresenterImpl;
 import io.gabrielcosta.githubpopular.ui.adapter.PullListAdapter;
+import io.gabrielcosta.githubpopular.utils.HostConfig;
 import java.util.List;
 
 public class PullListActivity extends AppCompatActivity implements PullListContract.PullListView {
@@ -74,7 +74,7 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
     recyclerView = (RecyclerView) findViewById(R.id.rv_pull);
     layoutManager = new LinearLayoutManager(this);
     adapter = new PullListAdapter();
-    presenter = new PullListPresenterImpl(this, new RepositoryService(BuildConfig.HOST_NAME),
+    presenter = new PullListPresenterImpl(this, new RepositoryService(HostConfig.HOST_URL),
         repositorieVO);
   }
 

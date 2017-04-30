@@ -10,16 +10,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
-import io.gabrielcosta.githubpopular.BuildConfig;
 import io.gabrielcosta.githubpopular.R;
-import io.gabrielcosta.githubpopular.entity.SaveListStateDTO;
-import io.gabrielcosta.githubpopular.ui.adapter.RepositoryListAdapter;
 import io.gabrielcosta.githubpopular.contract.RepositoryListContract.RepositoryListPresenter;
 import io.gabrielcosta.githubpopular.contract.RepositoryListContract.RepositoryListView;
 import io.gabrielcosta.githubpopular.entity.RepositorieVO;
+import io.gabrielcosta.githubpopular.entity.SaveListStateDTO;
 import io.gabrielcosta.githubpopular.model.RepositoryService;
 import io.gabrielcosta.githubpopular.presenter.RepositoryListPresenterImpl;
+import io.gabrielcosta.githubpopular.ui.adapter.RepositoryListAdapter;
 import io.gabrielcosta.githubpopular.utils.EndlessRecyclerOnScrollListener;
+import io.gabrielcosta.githubpopular.utils.HostConfig;
 import io.gabrielcosta.githubpopular.utils.NetworkUtils;
 import java.util.List;
 
@@ -100,7 +100,7 @@ public class RepositoryListActivity extends AppCompatActivity implements Reposit
     adapter = new RepositoryListAdapter();
     layout = new LinearLayoutManager(this);
     presenter = new RepositoryListPresenterImpl(this,
-        new RepositoryService(BuildConfig.HOST_NAME));
+        new RepositoryService(HostConfig.HOST_URL));
   }
 
   @Override
