@@ -1,6 +1,8 @@
 package io.gabrielcosta.githubpopular.utils;
 
+import android.content.Context;
 import android.support.annotation.DrawableRes;
+import android.support.v4.content.ContextCompat;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
@@ -16,9 +18,10 @@ public final class ImageLoaderHelper {
 
   public static void loadImage(final String url, final ImageView imageView,
       final @DrawableRes int placeholder) {
-    Glide.with(imageView.getContext())
+    final Context context = imageView.getContext();
+    Glide.with(context)
         .load(url)
-        .placeholder(placeholder)
+        .placeholder(ContextCompat.getDrawable(context, placeholder))
         .into(imageView);
   }
 
