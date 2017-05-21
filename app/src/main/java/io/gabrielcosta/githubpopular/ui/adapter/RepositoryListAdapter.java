@@ -16,12 +16,11 @@ import io.gabrielcosta.githubpopular.ui.activity.PullListActivity;
 import io.gabrielcosta.githubpopular.ui.adapter.RepositoryListAdapter.RepositoryVH;
 import io.gabrielcosta.githubpopular.utils.ImageLoaderHelper;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RepositoryListAdapter extends Adapter<RepositoryVH> {
 
-  private final List<RepositorieVO> list;
+  private final ArrayList<RepositorieVO> list;
 
   public RepositoryListAdapter() {
     this.list = new ArrayList<>();
@@ -67,8 +66,8 @@ public class RepositoryListAdapter extends Adapter<RepositoryVH> {
     notifyDataSetChanged();
   }
 
-  public List<RepositorieVO> getItemList() {
-    return Collections.unmodifiableList(list);
+  public ArrayList<RepositorieVO> getItemList() {
+    return list;
   }
 
   public static class RepositoryVH extends ViewHolder {

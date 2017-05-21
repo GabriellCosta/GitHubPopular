@@ -14,13 +14,13 @@ import io.gabrielcosta.githubpopular.R;
 import io.gabrielcosta.githubpopular.contract.RepositoryListContract.RepositoryListPresenter;
 import io.gabrielcosta.githubpopular.contract.RepositoryListContract.RepositoryListView;
 import io.gabrielcosta.githubpopular.entity.RepositorieVO;
-import io.gabrielcosta.githubpopular.entity.SaveListStateDTO;
 import io.gabrielcosta.githubpopular.model.RepositoryService;
 import io.gabrielcosta.githubpopular.presenter.RepositoryListPresenterImpl;
 import io.gabrielcosta.githubpopular.ui.adapter.RepositoryListAdapter;
 import io.gabrielcosta.githubpopular.utils.EndlessRecyclerOnScrollListener;
 import io.gabrielcosta.githubpopular.utils.HostConfig;
 import io.gabrielcosta.githubpopular.utils.NetworkUtils;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RepositoryListActivity extends AppCompatActivity implements RepositoryListView {
@@ -106,7 +106,7 @@ public class RepositoryListActivity extends AppCompatActivity implements Reposit
   @Override
   protected void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    outState.putSerializable(ITEM_LIST, new SaveListStateDTO(adapter.getItemList()));
+    outState.putParcelableArrayList(ITEM_LIST, adapter.getItemList());
     outState.putParcelable(LAYOUT_POSITION, layout.onSaveInstanceState());
     outState.putInt(PAGE_NUMBER, listener.getCurrentPage());
   }
@@ -116,9 +116,9 @@ public class RepositoryListActivity extends AppCompatActivity implements Reposit
     super.onRestoreInstanceState(savedInstanceState);
     if (savedInstanceState != null) {
       layout.onRestoreInstanceState(savedInstanceState.getParcelable(LAYOUT_POSITION));
-      SaveListStateDTO serializable = (SaveListStateDTO) savedInstanceState
-          .getSerializable(ITEM_LIST);
-      adapter.addItems((List<RepositorieVO>) serializable.getList());
+      final ArrayList<RepositorieVO> parcelableArrayList = savedInstanceState
+          .getParcelableArrayList(ITEM_LIST);
+      adapter.addItems(parcelableArrayList);
       listener.setCurrentPage(savedInstanceState.getInt(PAGE_NUMBER));
       progressBar.setVisibility(View.GONE);
       recyclerView.setVisibility(View.VISIBLE);

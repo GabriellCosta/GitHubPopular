@@ -1,13 +1,14 @@
 package io.gabrielcosta.githubpopular.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
-import java.io.Serializable;
 
 
 /**
  * VO utilized in view to fill repositores list
  */
-public class RepositorieVO implements Serializable {
+public class RepositorieVO implements Parcelable {
 
   @SerializedName("name")
   private final String name;
@@ -20,13 +21,12 @@ public class RepositorieVO implements Serializable {
   @SerializedName("owner")
   private final OwnerVO owner;
 
-  private RepositorieVO(String name, String description, int forks, int stars,
-      OwnerVO ownerVO) {
-    this.name = name;
-    this.description = description;
-    this.forks = forks;
-    this.stars = stars;
-    this.owner = ownerVO;
+  private RepositorieVO(Parcel in) {
+    name = in.readString();
+    description = in.readString();
+    forks = in.readInt();
+    stars = in.readInt();
+    owner = in.readParcelable(OwnerVO.class.getClassLoader());
   }
 
   public String getName() {
@@ -47,5 +47,31 @@ public class RepositorieVO implements Serializable {
 
   public OwnerVO getOwner() {
     return owner;
+  }
+
+  public static final Creator<RepositorieVO> CREATOR = new Creator<RepositorieVO>() {
+    @Override
+    public RepositorieVO createFromParcel(Parcel in) {
+      return new RepositorieVO(in);
+    }
+
+    @Override
+    public RepositorieVO[] newArray(int size) {
+      return new RepositorieVO[size];
+    }
+  };
+
+  @Override
+  public int describeContents() {
+    return hashCode();
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(name);
+    dest.writeString(description);
+    dest.writeInt(forks);
+    dest.writeInt(stars);
+    dest.writeParcelable(owner, flags);
   }
 }
