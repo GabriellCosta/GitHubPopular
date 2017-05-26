@@ -84,7 +84,7 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
 
   private void getExtras(final Bundle bundle) {
     if (bundle != null) {
-      repositorieVO = (RepositorieVO) bundle.getSerializable(EXTRA_REPOSITORY);
+      repositorieVO = bundle.getParcelable(EXTRA_REPOSITORY);
     } else {
       Log.e(TAG, "Intent should have Repository info");
       throw new IllegalArgumentException("Intent should have Repository info");
