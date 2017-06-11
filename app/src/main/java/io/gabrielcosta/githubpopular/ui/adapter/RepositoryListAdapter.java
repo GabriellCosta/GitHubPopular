@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import io.gabrielcosta.githubpopular.R;
-import io.gabrielcosta.githubpopular.entity.RepositorieVO;
 import io.gabrielcosta.githubpopular.ui.activity.PullListActivity;
 import io.gabrielcosta.githubpopular.ui.adapter.RepositoryListAdapter.RepositoryVH;
 import io.gabrielcosta.githubpopular.utils.ImageLoaderHelper;
+import io.gabrielcosta.service.entity.RepositorieVO;
 import java.util.ArrayList;
 import java.util.List;
 

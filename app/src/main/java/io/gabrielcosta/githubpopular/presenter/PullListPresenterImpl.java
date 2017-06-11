@@ -2,9 +2,9 @@ package io.gabrielcosta.githubpopular.presenter;
 
 import io.gabrielcosta.githubpopular.contract.PullListContract.PullListPresenter;
 import io.gabrielcosta.githubpopular.contract.PullListContract.PullListView;
-import io.gabrielcosta.githubpopular.entity.PullRequestVO;
-import io.gabrielcosta.githubpopular.entity.RepositorieVO;
-import io.gabrielcosta.githubpopular.model.RepositoryService;
+import io.gabrielcosta.service.RepositoryService;
+import io.gabrielcosta.service.entity.PullRequestVO;
+import io.gabrielcosta.service.entity.RepositorieVO;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;

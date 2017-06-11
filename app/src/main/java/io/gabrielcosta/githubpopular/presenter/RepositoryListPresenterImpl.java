@@ -2,8 +2,8 @@ package io.gabrielcosta.githubpopular.presenter;
 
 import io.gabrielcosta.githubpopular.contract.RepositoryListContract.RepositoryListPresenter;
 import io.gabrielcosta.githubpopular.contract.RepositoryListContract.RepositoryListView;
-import io.gabrielcosta.githubpopular.entity.RepositoriesDTO;
-import io.gabrielcosta.githubpopular.model.RepositoryService;
+import io.gabrielcosta.service.RepositoryService;
+import io.gabrielcosta.service.entity.RepositoriesDTO;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

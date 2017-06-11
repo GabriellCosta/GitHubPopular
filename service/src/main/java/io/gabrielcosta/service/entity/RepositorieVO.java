@@ -1,4 +1,4 @@
-package io.gabrielcosta.githubpopular.entity;
+package io.gabrielcosta.service.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;

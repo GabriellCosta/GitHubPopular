@@ -1,6 +1,5 @@
-package io.gabrielcosta.githubpopular.model;
+package io.gabrielcosta.service;
 
-import android.support.annotation.NonNull;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -17,7 +16,6 @@ final class RetrofitBuilder {
   private RetrofitBuilder() {
   }
 
-  @NonNull
   public Retrofit build(final String baseUrl) {
     return new Retrofit.Builder()
         .baseUrl(baseUrl)

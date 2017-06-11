@@ -1,4 +1,4 @@
-package io.gabrielcosta.githubpopular.entity;
+package io.gabrielcosta.service.entity;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.Collections;

@@ -1,6 +1,7 @@
 package io.gabrielcosta.githubpopular.contract;
 
-import io.gabrielcosta.githubpopular.entity.RepositorieVO;
+
+import io.gabrielcosta.service.entity.RepositorieVO;
 import java.util.List;
 
 public class RepositoryListContract {

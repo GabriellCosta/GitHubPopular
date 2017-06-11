@@ -1,14 +1,13 @@
-package io.gabrielcosta.githubpopular.model;
+package io.gabrielcosta.service;
 
-import io.gabrielcosta.githubpopular.utils.TestUtils;
-import junit.framework.Assert;
+import io.gabrielcosta.service.utils.TestUtils;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Created by gabrielcosta on 15/04/17.
+ * Created by gabrielcosta on 11/06/17.
  */
-
 public class RepositoryServiceTest {
 
   private RepositoryService service;
@@ -64,4 +63,5 @@ public class RepositoryServiceTest {
   public void shoulThrowExceptionWhenRepositoryAndUserAreEmpty() {
     service.fetchPullREquest("", "").request().url();
   }
+
 }

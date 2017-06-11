@@ -1,6 +1,7 @@
 package io.gabrielcosta.githubpopular.contract;
 
-import io.gabrielcosta.githubpopular.entity.PullRequestVO;
+
+import io.gabrielcosta.service.entity.PullRequestVO;
 import java.util.List;
 
 /**

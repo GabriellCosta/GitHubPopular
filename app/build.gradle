@@ -37,6 +37,7 @@ ext {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':service')
     androidTestCompile('com.squareup.okhttp:mockwebserver:2.7.5') {
         exclude module: 'okio'
     }
@@ -48,9 +49,6 @@ dependencies {
     })
 
     //API
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     //support
     compile "com.android.support:appcompat-v7:${supportLibVersion}"

@@ -1,7 +1,7 @@
-package io.gabrielcosta.githubpopular.model;
+package io.gabrielcosta.service;
 
-import io.gabrielcosta.githubpopular.entity.PullRequestVO;
-import io.gabrielcosta.githubpopular.entity.RepositoriesDTO;
+import io.gabrielcosta.service.entity.PullRequestVO;
+import io.gabrielcosta.service.entity.RepositoriesDTO;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;

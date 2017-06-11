@@ -14,12 +14,12 @@ import android.widget.ProgressBar;
 import io.gabrielcosta.githubpopular.R;
 import io.gabrielcosta.githubpopular.contract.PullListContract;
 import io.gabrielcosta.githubpopular.contract.PullListContract.PullListPresenter;
-import io.gabrielcosta.githubpopular.entity.PullRequestVO;
-import io.gabrielcosta.githubpopular.entity.RepositorieVO;
-import io.gabrielcosta.githubpopular.model.RepositoryService;
 import io.gabrielcosta.githubpopular.presenter.PullListPresenterImpl;
 import io.gabrielcosta.githubpopular.ui.adapter.PullListAdapter;
 import io.gabrielcosta.githubpopular.utils.HostConfig;
+import io.gabrielcosta.service.RepositoryService;
+import io.gabrielcosta.service.entity.PullRequestVO;
+import io.gabrielcosta.service.entity.RepositorieVO;
 import java.util.List;
 
 public class PullListActivity extends AppCompatActivity implements PullListContract.PullListView {
