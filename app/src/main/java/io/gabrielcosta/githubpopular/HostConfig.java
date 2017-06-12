@@ -1,6 +1,4 @@
-package io.gabrielcosta.githubpopular.utils;
-
-import io.gabrielcosta.githubpopular.BuildConfig;
+package io.gabrielcosta.githubpopular;
 
 /**
  * Configuração de HOSt para chamada de API's

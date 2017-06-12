@@ -31,13 +31,10 @@ android {
 
 }
 
-ext {
-    supportLibVersion = '25.3.1'
-}
-
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':service')
+    compile project(':common')
     androidTestCompile('com.squareup.okhttp:mockwebserver:2.7.5') {
         exclude module: 'okio'
     }
@@ -50,11 +47,7 @@ dependencies {
 
     //API
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    //support
-    compile "com.android.support:appcompat-v7:${supportLibVersion}"
-    compile "com.android.support:recyclerview-v7:${supportLibVersion}"
-    compile "com.android.support:design:${supportLibVersion}"
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
     //Test
     testCompile 'junit:junit:4.12'
     testCompile 'com.github.tomakehurst:wiremock:2.5.1'

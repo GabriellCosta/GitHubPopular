@@ -1,4 +1,4 @@
-package io.gabrielcosta.githubpopular.utils;
+package io.gabrielcosta.common.utils;
 
 import android.content.Context;
 import android.support.annotation.DrawableRes;
