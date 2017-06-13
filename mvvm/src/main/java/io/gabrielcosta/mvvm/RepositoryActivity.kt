@@ -4,6 +4,7 @@ import android.arch.lifecycle.LifecycleActivity
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
 import android.support.v7.widget.DividerItemDecoration
@@ -74,6 +75,8 @@ class RepositoryActivity : LifecycleActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         val position = recyclerView.getChildAdapterPosition(v)
         val get = liveData.value?.get(position)
-        Toast.makeText(this, get?.name, Toast.LENGTH_LONG).show()
+        val intent = Intent(this, PullRequestActivity::class.java)
+                .putExtra(PullRequestActivity.EXTRA_REPOSITORY, get)
+        startActivity(intent)
     }
 }
