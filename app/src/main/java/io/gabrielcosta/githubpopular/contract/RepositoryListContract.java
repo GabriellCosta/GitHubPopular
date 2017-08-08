@@ -11,6 +11,8 @@ public class RepositoryListContract {
 
     void setError();
 
+    void setMaxRequestError();
+
     void setItems(final List<RepositorieVO> items);
 
   }

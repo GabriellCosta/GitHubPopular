@@ -35,6 +35,7 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
   private ProgressBar progressBar;
   private View emptyStateView;
   private View rootView;
+  private Snackbar make;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,6 +59,13 @@ public class PullListActivity extends AppCompatActivity implements PullListContr
   public void setEmptyList() {
     emptyStateView.setVisibility(View.VISIBLE);
     progressBar.setVisibility(View.GONE);
+  }
+
+  @Override
+  public void setMaxRequestError() {
+    progressBar.setVisibility(View.GONE);
+    make = Snackbar.make(rootView, R.string.request_requisition_exceed, BaseTransientBottomBar.LENGTH_INDEFINITE);
+    make.show();
   }
 
   @Override

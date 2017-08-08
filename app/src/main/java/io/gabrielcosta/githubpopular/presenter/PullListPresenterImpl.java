@@ -6,6 +6,8 @@ import io.gabrielcosta.githubpopular.entity.PullRequestVO;
 import io.gabrielcosta.githubpopular.entity.RepositorieVO;
 import io.gabrielcosta.githubpopular.model.RepositoryService;
 import java.util.List;
+
+import io.gabrielcosta.githubpopular.utils.RemainRequest;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,7 +35,11 @@ public final class PullListPresenterImpl implements PullListPresenter {
             if (response.isSuccessful() && !response.body().isEmpty()) {
               view.setItems(response.body());
             } else {
-              view.setEmptyList();
+                if (RemainRequest.hasRequestToMake(response.headers())) {
+                    view.setMaxRequestError();
+                } else {
+                    view.setError();
+                }
             }
           }
 

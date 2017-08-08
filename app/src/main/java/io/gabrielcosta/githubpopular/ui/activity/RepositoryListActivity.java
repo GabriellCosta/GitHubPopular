@@ -37,6 +37,7 @@ public class RepositoryListActivity extends AppCompatActivity implements Reposit
   private EndlessRecyclerOnScrollListener listener;
   private View rootView;
   private View emptyStateView;
+  private Snackbar make;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -66,12 +67,23 @@ public class RepositoryListActivity extends AppCompatActivity implements Reposit
   }
 
   @Override
+  public void setMaxRequestError() {
+    progressBar.setVisibility(View.GONE);
+    make = Snackbar.make(rootView, R.string.request_requisition_exceed, BaseTransientBottomBar.LENGTH_INDEFINITE);
+    make.show();
+    listener.wasLoaded(Boolean.TRUE);
+  }
+
+  @Override
   public void setItems(List<RepositorieVO> items) {
     emptyStateView.setVisibility(View.GONE);
     progressBar.setVisibility(View.GONE);
     recyclerView.setVisibility(View.VISIBLE);
     adapter.addItems(items);
     listener.wasLoaded(Boolean.TRUE);
+    if (make != null) {
+      make.dismiss();
+    }
   }
 
   private void noInternetConnection() {

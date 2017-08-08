@@ -4,6 +4,7 @@ import io.gabrielcosta.githubpopular.contract.RepositoryListContract.RepositoryL
 import io.gabrielcosta.githubpopular.contract.RepositoryListContract.RepositoryListView;
 import io.gabrielcosta.githubpopular.entity.RepositoriesDTO;
 import io.gabrielcosta.githubpopular.model.RepositoryService;
+import io.gabrielcosta.githubpopular.utils.RemainRequest;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,7 +38,11 @@ public final class RepositoryListPresenterImpl implements
         if (response.isSuccessful() && !response.body().getItems().isEmpty()) {
           view.setItems(response.body().getItems());
         } else {
-          view.setError();
+          if (RemainRequest.hasRequestToMake(response.headers())) {
+            view.setMaxRequestError();
+          } else {
+            view.setError();
+          }
         }
       }
 

@@ -15,6 +15,8 @@ public final class PullListContract {
 
     void setEmptyList();
 
+    void setMaxRequestError();
+
     void setError();
 
   }
